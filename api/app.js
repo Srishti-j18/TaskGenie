@@ -70,10 +70,20 @@ app.delete('/lists/:id', (req, res) => {
 app.get('/lists/:listId/tasks', (req, res) => {
     // we want to return all tasks that belongs to specific list (specified by listId)
     Task.find({
-        _listId: req.params.listed
+        _listId: req.params.listId
     }).then((tasks) => {
         res.send(tasks);
     })
+})
+
+app.get('/lists/:listId/tasks/:taskId', (req, res) => {
+    Task.findOne({
+        _id: req.params.taskId,
+        _listId: req.params.listId
+    }).then((task) => {
+        res.send(task);
+    })
+
 })
 
 // POST /lists/:listId/tasks
@@ -90,8 +100,32 @@ app.post('/lists/:listId/tasks', (req, res) => {
 
 })
 
+// PATCH /lists/:listId/tasks/:taskId
+// Purpose : Update an existing task
 
+app.patch('/lists/:listId/tasks/:taskId', (req, res) => {
+    // We want to update an existing task (specified by taskId)
+    Task.findOneAndUpdate({
+        _id: req.params.taskId,
+        _listId: req.params.listId
+    }, {
+        $set: req.body
+    }).then(() => {
+        res.sendStatus(200);
+    });
+});
 
+// Post /lists/:listId/tasks/:taskId
+// Purpose:  delete a task
+app.delete('/lists/:listId/tasks/:taskId', (req, res) => {
+    // We want to delete a task
+    Task.findOneAndDelete({
+        _id: req.params.taskId,
+        _listId: req.params.listId
+    }).then((removedTaskDoc) => {
+        res.send(removedTaskDoc);
+    });
+});
 app.listen(3000, () => {
     console.log("Server is listening on port 3000");
 })
