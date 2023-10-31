@@ -65,6 +65,33 @@ app.delete('/lists/:id', (req, res) => {
     });
 });
 
+// GET /lists/:listId/tasks
+// Purpose: Get all tasks in a specific list
+app.get('/lists/:listId/tasks', (req, res) => {
+    // we want to return all tasks that belongs to specific list (specified by listId)
+    Task.find({
+        _listId: req.params.listed
+    }).then((tasks) => {
+        res.send(tasks);
+    })
+})
+
+// POST /lists/:listId/tasks
+// Purpose: Create a new task in a specific list
+app.post('/lists/:listId/tasks', (req, res) => {
+    // we want create a new task that belongs to specific list (specified by listId)
+    let newTask = new Task({
+        title: req.body.title,
+        _listId: req.params.listId
+    });
+    newTask.save().then((newTaskDoc) => {
+        res.send(newTaskDoc);
+    })
+
+})
+
+
+
 app.listen(3000, () => {
     console.log("Server is listening on port 3000");
 })
