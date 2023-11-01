@@ -5,41 +5,29 @@
                 Lists
             </h1>
             <div class="list-menu">
-                <a class="list-menu-items is-active">
-                    <p>List#1</p>
+
+                <!-- <a class="list-menu-items " *ngFor="let list of lists" [routerLink]="['lists',list._id]">
+                    <p>{{list.title}}</p>
+
+                </a> -->
+                <a class="list-menu-items ">
+                    <p>List1</p>
 
                 </a>
-                <a class="list-menu-items">
-                    <p>List#1</p>
-                </a>
-                <a class="list-menu-items">
-                    <p>List#1</p>
-
-                </a>
-                <a class="list-menu-items">
-                    <p>List#1</p>
-
-                </a>
-                <!-- <button class="button is-primary has-text-white">+ New List</button> -->
             </div>
-            <button class="button is-primary has-text-white" (click)="createNewList()">+ New List</button>
+            <button class="button is-primary has-text-white" routerLink="/new-list">+ New List</button>
         </div>
         <div class="task-list-container has-background-light">
             <h1 class="title has-text-primary">
                 Tasks
             </h1>
             <!-- Task elements -->
+
+            <!-- <div class="task" *ngFor="let task os tasks">
+                <p>{{task.title}}</p>
+            </div> -->
             <div class="task">
-                <p>task1</p>
-            </div>
-            <div class="task">
-                <p>task2</p>
-            </div>
-            <div class="task">
-                <p>task3</p>
-            </div>
-            <div class="task complete">
-                <p>task4</p>
+                <p>task</p>
             </div>
 
         </div>
