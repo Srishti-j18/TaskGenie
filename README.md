@@ -51,7 +51,7 @@ TaskGenie is your magical solution for effective task management and productivit
 
    ```bash
    ng serve
-6.Open your web browser and navigate to `http://localhost:4200/` to access TaskGenie.
+6. Open your web browser and navigate to `http://localhost:4200/` to access TaskGenie.
 
 ## Usage
 
