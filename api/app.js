@@ -6,7 +6,10 @@ const { mongoose } = require('./db/mongoose');
 const bodyParser = require('body-parser');
 
 // Load in the mongoose models
-const { List, Task } = require('./db/models');
+const { List, Task, User } = require('./db/models');
+
+
+// MIDDLEWARE
 
 //Load middleware
 app.use(bodyParser.json());
@@ -19,6 +22,58 @@ app.use(cors({
     credentials: true, // enable set cookie
     optionsSuccessStatus: 204,
 }));
+
+// Verify Refresh Token Middleware (which will be verifying the session)
+let verifySession = (req, res, next) => {
+    // grab the refresh token from the request header
+    let refreshToken = req.header('x-refresh-token');
+
+    // grab the id from req header
+    let _id = req.header('_id');
+
+    User.findByIdAndToken(_id, refreshToken).then((user) => {
+        if (!user) {
+            // user not exist
+            return Promise.reject({
+                'error': 'User not found .Make sure that the refresh token and user id are correct'
+            });
+        }
+
+        // if user found then session is valid , then the refresh token exists in database but we still have to check if it expired or not
+
+        req.user_id = user._id;
+        req.userObject = user;
+        req.refreshToken = refreshToken;
+
+
+        let isSessionValid = false;
+
+        user.sessions.forEach((session) => {
+            if (session.token === refreshToken) {
+                // if session expire
+                if (User.hasRefreshTokenExpire(session.expiresAt) === false) {
+                    // refresh token hasn't expire
+                    isSessionValid = true;
+
+                }
+            }
+        });
+        if (isSessionValid) {
+            // if the session valid - call next() to continue with the processing this web request
+            next();
+        } else {
+            // session is not valid
+            return Promise.reject({
+                'error': 'Refresh Token is expired or the session is invalid'
+            });
+        }
+    }).catch((e) => {
+        res.status(401).send(e);
+    });
+};
+
+
+// END MIDDLEWARE
 
 
 // Root Handlers
@@ -142,6 +197,85 @@ app.delete('/lists/:listId/tasks/:taskId', (req, res) => {
         res.send(removedTaskDoc);
     });
 });
+
+// User roots
+
+// Post/ users
+// purpose: Sign Up 
+
+app.post('/users', (req, res) => {
+    // User sign up
+
+    let body = req.body;
+    let newUser = new User(body);
+
+    newUser.save().then(() => {
+        return newUser.createSession();
+    }).then((refreshToken) => {
+        // Session created -refreshToken returned
+        // now we generate an access auth token for the user
+
+        return newUser.generateAccessAuthToken().then((accessToken) => {
+            // access auth token generated successfully , 
+            // now we can return an object containing auth token
+
+            return { accessToken, refreshToken };
+        });
+    }).then((authTokens) => {
+        // Now we construct and send the response to the user with their auth tokens
+        res
+            .header('x-refresh-token', authTokens.refreshToken)
+            .header('x-access-token', authTokens.accessToken)
+            .send(newUser);
+    }).catch((e) => {
+        res.status(400).send(e);
+    })
+});
+
+// Post/ users/login
+// purpose: Login Up 
+
+app.post('/users/login', (req, res) => {
+    let email = req.body.email;
+    let password = req.body.password;
+
+    User.findByCredentials(email, password).then((user) => {
+        return user.createSession().then((refreshToken) => {
+            // Session created -refreshToken returned
+            // now we generate an access auth token for the user
+
+            return user.generateAccessAuthToken().then((accessToken) => {
+                // access auth token generated successfully , 
+                // now we can return an object containing auth token
+
+                return { accessToken, refreshToken };
+            });
+        }).then((authTokens) => {
+            // Now we construct and send the response to the user with their auth tokens
+            res
+                .header('x-refresh-token', authTokens.refreshToken)
+                .header('x-access-token', authTokens.accessToken)
+                .send(user);
+        })
+    }).catch((e) => {
+        res.status(400).send(e);
+    });
+});
+
+// GET /users/me/access-token
+// Purpose: generates and return an access token
+
+app.get('/users/me/access-token', verifySession, (req, res) => {
+    // we know that the user/caller is authenticated, we have user_id and user
+
+    req.userObject.generateAccessAuthToken().then((accessToken) => {
+        res.header('x-access-token', accessToken).send({ accessToken });
+    }).catch((e) => {
+        res.status(400).send(e);
+    })
+
+})
+
 app.listen(3000, () => {
     console.log("Server is listening on port 3000");
 })

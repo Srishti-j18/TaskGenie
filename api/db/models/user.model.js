@@ -98,15 +98,15 @@ UserSchema.methods.createSession = function () {
 
 // Model methods (static methods)
 
-UserSchema.static.findByIdAndToken = function (_id, token) {
+UserSchema.statics.findByIdAndToken = function (_id, token) {
     // finds user by id and token
     // used in auth middleware (verifySession)
 
     const User = this;
     return User.findOne({
         _id,
-        'session.token': token
-    })
+        'sessions.token': token
+    });
 }
 
 UserSchema.statics.findByCredentials = function (email, password) {
@@ -130,7 +130,7 @@ UserSchema.statics.findByCredentials = function (email, password) {
 
 }
 
-UserSchema.static.hasRefreshTokenExpire = (expiresAt) => {
+UserSchema.statics.hasRefreshTokenExpire = (expiresAt) => {
     let secondsSinceEpoch = Date.now() / 1000;
     if (expiresAt > secondsSinceEpoch) {
         // hasn't expired yet
