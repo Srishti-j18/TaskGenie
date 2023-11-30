@@ -30,4 +30,10 @@ export class TaskService {
     return this.webReqService.post(`lists/${listId}/tasks`, { title }) as Observable<Task>;
   }
 
+  complete(task: Task) {
+    return this.webReqService.patch<Task[]>(`lists/${task._listId}/tasks/${task._id}`, {
+      completed: !task.completed
+    });
+  }
+
 }

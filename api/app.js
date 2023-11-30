@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
 const { mongoose } = require('./db/mongoose');
@@ -11,11 +12,14 @@ const { List, Task } = require('./db/models');
 app.use(bodyParser.json());
 
 // Cors header middleware
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+
+app.use(cors({
+    origin: 'http://localhost:4200',
+    methods: ['GET', 'POST', 'HEAD', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'],
+    credentials: true, // enable set cookie
+    optionsSuccessStatus: 204,
+}));
+
 
 // Root Handlers
 
@@ -51,12 +55,19 @@ app.post('/lists', (req, res) => {
 // Purpose: Update a specific list
 app.patch('/lists/:id', (req, res) => {
     // We want to update the specific list (list document with id in the URL) with the new values specified in the JSON body
-    List.findOneAndUpdate({ _id: req.params.id }, {
-        $set: req.body
-    }).then(() => {
+    List.findOneAndUpdate({
+        _id: req.params.id,
+
+    },
+        {
+
+            $set: req.body
+        }
+    ).then(() => {
         res.sendStatus(200);
     });
 });
+
 
 
 // Post /lists/:id
@@ -116,7 +127,7 @@ app.patch('/lists/:listId/tasks/:taskId', (req, res) => {
     }, {
         $set: req.body
     }).then(() => {
-        res.sendStatus(200);
+        res.send({ message: 'Updated successfully.' });
     });
 });
 
