@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'new-list', component: NewListComponent },
   { path: 'new-list', component: NewListComponent },
   { path: 'login', component: LoginPageComponent },
+  { path: 'lists', component: TaskViewComponent },
   { path: 'lists/:listId', component: TaskViewComponent },
   { path: 'lists/:listId/new-task', component: NewTaskComponent },
 ];

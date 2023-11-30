@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 const app = express();
 
 const { mongoose } = require('./db/mongoose');
@@ -14,14 +13,14 @@ const { List, Task, User } = require('./db/models');
 //Load middleware
 app.use(bodyParser.json());
 
-// Cors header middleware
-
-app.use(cors({
-    origin: 'http://localhost:4200',
-    methods: ['GET', 'POST', 'HEAD', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'],
-    credentials: true, // enable set cookie
-    optionsSuccessStatus: 204,
-}));
+// CORS HEADERS MIDDLEWARE
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD");
+    res.header("Access-Control-Allow-Methods", "GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE");
+    // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 // Verify Refresh Token Middleware (which will be verifying the session)
 let verifySession = (req, res, next) => {
