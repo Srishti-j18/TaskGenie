@@ -12,7 +12,8 @@ import { Task } from 'src/app/models/task.model';
 export class TaskViewComponent implements OnInit {
 
   lists!: List[];
-  tasks!: Task[];
+  tasks: Task[] | undefined;
+
 
   constructor(private taskService: TaskService, private route: ActivatedRoute) { }
 
@@ -24,9 +25,10 @@ export class TaskViewComponent implements OnInit {
         if (params['listId']) {
           this.taskService.getTasks(params['listId']).subscribe((tasks: Task[]) => {
             this.tasks = tasks;
+
           })
         } else {
-          this.tasks = [];
+          this.tasks = undefined;
         }
 
       }
