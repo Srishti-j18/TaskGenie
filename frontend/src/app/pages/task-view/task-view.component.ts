@@ -11,8 +11,8 @@ import { Task } from 'src/app/models/task.model';
 })
 export class TaskViewComponent implements OnInit {
 
-  lists: List[] = [];
-  tasks: Task[] = [];
+  lists!: List[];
+  tasks!: Task[];
 
   constructor(private taskService: TaskService, private route: ActivatedRoute) { }
 

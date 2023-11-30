@@ -12,7 +12,7 @@ export class NewTaskComponent {
 
   constructor(private taskService: TaskService, private route: ActivatedRoute, private router: Router) { }
 
-  listId: string = "";
+  listId!: string;
 
   ngOnInit() {
     this.route.params.subscribe(
