@@ -1,16 +1,16 @@
 <div class="centered-content">
     <div class="model-box ">
         <h1 class="title">
-            Create a New List
+            Create a New Task
         </h1>
 
 
-        <input #listTitleInput class="input has-background-light " type="text" placeholder="Enter list name...">
+        <input #taskTitleInput class="input has-background-light " type="text" placeholder="Enter task name...">
 
         <div class="buttons is-right" style="margin-top: 20px;">
             <button class="button is-medium" routerLink="/">Cancel</button>
             <button class="button is-primary has-text-white is-medium"
-                (click)="createList(listTitleInput.value)">Create</button>
+                (click)="createTask(taskTitleInput.value)">Create</button>
 
         </div>
     </div>

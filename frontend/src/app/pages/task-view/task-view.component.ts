@@ -19,7 +19,7 @@ export class TaskViewComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        console.log(params);
+
         // Check if listId is defined before making the request
         if (params['listId']) {
           this.taskService.getTasks(params['listId']).subscribe((tasks: Task[]) => {
