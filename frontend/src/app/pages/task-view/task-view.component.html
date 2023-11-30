@@ -6,7 +6,8 @@
             </h1>
             <div class="list-menu">
 
-                <a class="list-menu-items " *ngFor="let list of lists" [routerLink]="['/lists',list._id]">
+                <a class="list-menu-items " *ngFor="let list of lists" [routerLink]="['/lists',list._id]"
+                    routerLinkActive="is-active">
                     <p>{{list.title}}</p>
 
                 </a>
@@ -24,6 +25,9 @@
                 <p>{{task.title}}</p>
             </div>
 
+            <button class="circle-add-button button is-primary">
+                <img src="../../../assets/plus-1727487_640.webp">
+            </button>
 
         </div>
 
