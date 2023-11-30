@@ -35,23 +35,28 @@ TaskGenie is your magical solution for effective task management and productivit
 2. Navigate to the project directory:
 
    ```bash
-   cd taskgenie-web-app
+   cd TaskGenie
 
 3. Install Angular CLI globally (if not already installed):
 
    ```bash
    npm install -g @angular/cli
    
-4. Install the required dependencies:
+4. Navigate to the frontend directory:
+
+   ```bash
+   cd frontend
+   
+5. Install the required dependencies:
 
    ```bash
    npm install
 
-5. Start the application:
+6. Start the application:
 
    ```bash
    ng serve
-6. Open your web browser and navigate to `http://localhost:4200/` to access TaskGenie.
+7. Open your web browser and navigate to `http://localhost:4200/` to access TaskGenie.
 
 ## Usage
 
