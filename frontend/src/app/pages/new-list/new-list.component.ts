@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from 'src/app/task.service';
+import { List } from 'src/app/models/list.model';
 
 @Component({
   selector: 'app-new-list',
@@ -14,9 +15,9 @@ export class NewListComponent implements OnInit {
 
   }
   createList(title: string) {
-    this.taskService.createList(title).subscribe((response: any) => {
-      console.log(response);
-      // Now we navigate to /lists/response_id
+    this.taskService.createList(title).subscribe((lists: List) => {
+      console.log(lists);
+      // Now we navigate to /lists/response._id
     });
   }
 }

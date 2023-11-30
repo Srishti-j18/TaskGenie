@@ -6,10 +6,10 @@
             </h1>
             <div class="list-menu">
 
-                <!-- <a class="list-menu-items " *ngFor="let list of lists" [routerLink]="['lists',list._id]">
+                <a class="list-menu-items " *ngFor="let list of lists" [routerLink]="['/lists',list._id]">
                     <p>{{list.title}}</p>
 
-                </a> -->
+                </a>
                 <a class="list-menu-items ">
                     <p>List1</p>
 
@@ -23,9 +23,9 @@
             </h1>
             <!-- Task elements -->
 
-            <!-- <div class="task" *ngFor="let task os tasks">
+            <div class="task" *ngFor="let task of tasks">
                 <p>{{task.title}}</p>
-            </div> -->
+            </div>
             <div class="task">
                 <p>task</p>
             </div>
