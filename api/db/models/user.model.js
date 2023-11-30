@@ -130,6 +130,18 @@ UserSchema.statics.findByCredentials = function (email, password) {
 
 }
 
+UserSchema.static.hasRefreshTokenExpire = (expiresAt) => {
+    let secondsSinceEpoch = Date.now() / 1000;
+    if (expiresAt > secondsSinceEpoch) {
+        // hasn't expired yet
+        return false;
+    }
+    else {
+        // has expired
+        return true;
+    }
+}
+
 // Middleware
 // Before a user document is saved , this code runs
 UserSchema.pre('save', function (next) {
@@ -172,3 +184,7 @@ let generateRefreshTokenExpiryTime = () => {
     let secondsUntilExpire = ((daysUntilExpire * 24) * 60) * 60;
     return ((Date.now() / 1000) + secondsUntilExpire);
 }
+
+const User = mongoose.model('User', UserSchema);
+
+module.exports = { User }
