@@ -4,7 +4,7 @@
 
 TaskGenie is your magical solution for effective task management and productivity enhancement. This user-friendly web app empowers you to regulate your daily routine, keep track of your tasks, and maintain discipline while adding a touch of enchantment to your day.
 
-<p><img src="image/photo_2023-12-02_01-58-13.jpg" width="100%" height="60%" /></p>
+<p><img src="image/Screenshot from 2023-12-02 02-11-27.png" width="100%" height="60%" /></p>
 
 ## Features
 
