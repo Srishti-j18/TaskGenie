@@ -28,4 +28,13 @@ export class WebRequestService {
   delete<T>(uri: string): Observable<T> {
     return this.http.delete<T>(`${this.ROOT_URL}/${uri}`);
   }
+
+  login(email: string, password: string) {
+    return this.http.post(`${this.ROOT_URL}/userslogin`, {
+      email,
+      password
+    }, {
+      observe: 'response'
+    });
+  }
 }
