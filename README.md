@@ -1,24 +1,24 @@
 # TaskGenie
 
-<p><img src="image/Screenshot from 2023-12-02 01-44-27.png" width="100%" height="60%" /></p>
+<p float="left">
+  <img src="image/Screenshot from 2023-12-02 01-44-27.png" width="50%" height="50%" />
+</p>
 
 TaskGenie is your magical solution for effective task management and productivity enhancement. This user-friendly web app empowers you to regulate your daily routine, keep track of your tasks, and maintain discipline while adding a touch of enchantment to your day.
+<p>
+ <img src="image/Screenshot from 2023-12-02 02-11-27.png" width="50%" height="50%" />
+ </p>
 
-<p><img src="image/Screenshot from 2023-12-02 02-11-27.png" width="100%" height="60%" /></p>
 
 ## Features
 
-- **Login/Signup**: User can keep their data private by login into TaskGenie.
+- **Login/Signup**: User can keep their data private by logging into TaskGenie.
 
 - **Task Tracking**: Effortlessly keep track of your tasks and to-do items.
 
 - **List Creation**: Create lists to categorize and prioritize your tasks.
 
 - **Subtask Management**: Break down complex tasks into smaller, manageable subtasks.
-
-- **List Deletion**: Easily delete lists that are no longer needed.
-
-- **Task Deletion**: Remove individual tasks from your lists.
 
 - **Task Completion**: Mark tasks as complete, celebrating your accomplishments.
 
@@ -66,7 +66,7 @@ TaskGenie makes it easy to maintain discipline and achieve your goals. Create li
 
 ##  Bug Reporting
 
-Feel free to [open an issue](https://github.com/Srishti-j18/TaskGenie/issues) on GitHub if you find any bug.
+Feel free to [open an issue](https://github.com/Srishti-j18/TaskGenie/issues) on GitHub if you find any bugs.
 
 
 ##  Feature Request
