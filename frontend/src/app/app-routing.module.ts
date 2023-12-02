@@ -9,7 +9,6 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 const routes: Routes = [
   { path: '', redirectTo: 'lists', pathMatch: 'full' },
   { path: 'new-list', component: NewListComponent },
-  { path: 'new-list', component: NewListComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: SignupPageComponent },
   { path: 'lists', component: TaskViewComponent },
