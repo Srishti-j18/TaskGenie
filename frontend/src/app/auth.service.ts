@@ -20,14 +20,12 @@ export class AuthService {
         const accessToken = res.headers.get('x-access-token');
         const refreshToken = res.headers.get('x-refresh-token');
 
-        if (userId && accessToken && refreshToken) {
+        if (userId && accessToken !== null && refreshToken !== null) {
           this.setSession(userId, accessToken, refreshToken);
           console.log("LoggedIn");
-
-
         } else {
-          // Handle the case when one of the tokens is null
-          console.error("Invalid response format");
+          // Log the response and headers for debugging purposes
+          console.error("Invalid response format", { response: res, accessToken, refreshToken });
         }
       })
     )
