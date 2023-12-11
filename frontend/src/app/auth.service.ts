@@ -56,6 +56,18 @@ export class AuthService {
     this.removeSession();
   }
 
+  getAccessToken() {
+    return localStorage.getItem('x-access-Token');
+  }
+  getRefreshToken() {
+    return localStorage.getItem('x-refresh-Token');
+  }
+
+  setAccessToken(accessToken: string) {
+    localStorage.setItem('x-access-Token', accessToken);
+  }
+
+
   private setSession(userId: string, accessToken: string, refreshToken: string) {
     localStorage.setItem('userId', userId);
     localStorage.setItem('accessToken', accessToken);
