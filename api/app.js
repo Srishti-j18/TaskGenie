@@ -135,12 +135,13 @@ app.post('/lists', authenticate, (req, res) => {
     })
 });
 
-// Post /lists/:id
+// Patch /lists/:id
 // Purpose: Update a specific list
-app.patch('/lists/:id', (req, res) => {
+app.patch('/lists/:id', authenticate, (req, res) => {
     // We want to update the specific list (list document with id in the URL) with the new values specified in the JSON body
     List.findOneAndUpdate({
         _id: req.params.id,
+        _userId: req.user_id
 
     },
         {
