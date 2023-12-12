@@ -21,13 +21,14 @@
                 </span>
             </p>
         </div>
-        <div class="field">
+        <div class="field" style="display: flex; justify-content: flex-end;">
             <p class="control">
-                <button class="button is-success has-text-white is-pulled-right has-background-primary"
+                <button class="button is-success has-text-white has-background-primary"
                     (click)="onSignupButtonClicked(emailInput.value,pwInput.value)">
                     Sign up
                 </button>
             </p>
         </div>
+        <p>Already have an account<a class="has-text-primary" routerLink="/login"> Login up </a>now!</p>
     </div>
 </div>
