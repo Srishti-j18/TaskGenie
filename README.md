@@ -6,7 +6,7 @@
 
 TaskGenie is your magical solution for effective task management and productivity enhancement. This user-friendly web app empowers you to regulate your daily routine, keep track of your tasks, and maintain discipline while adding a touch of enchantment to your day.
 <p>
- <img src="TaskGenie/image/login_screenshot.png" width="60%" height="50%" />
+ <img src="image/login_screenshot.png" width="60%" height="50%" />
  </p>
 
 
@@ -22,43 +22,57 @@ TaskGenie is your magical solution for effective task management and productivit
 
 - **Task Completion**: Mark tasks as complete, celebrating your accomplishments.
 
-## System Requirements
-
-- Node.js (v16.20.2)
-  - You can download Node.js from [here](https://nodejs.org/).
-
 ## Installation
 
-1. Clone this repository:
+Prerequisites
+----------------
+
+        - Node.js
+        - NPM
+        - Angular CLI 
+        - MongoDB
+        - Use nvm install 8 & nvm use 8
+
+To Setup
+---------- 
+
+1. Clone this repository Or Download this repository:
 
    ```bash
    git clone https://github.com/Srishti-j18/TaskGenie.git
 
-2. Navigate to the project directory:
+3. Navigate to the frontend project directory:
 
    ```bash
-   cd TaskGenie
-
-3. Install Angular CLI globally (if not already installed):
-
-   ```bash
-   npm install -g @angular/cli
+   cd TaskGenie/frontend
    
-4. Navigate to the frontend directory:
-
-   ```bash
-   cd frontend
-   
-5. Install the required dependencies:
+4. Install the required dependencies:
 
    ```bash
    npm install
 
-6. Start the application:
+5. Navigate to the backend project directory:
 
    ```bash
+   cd TaskGenie/api
+
+6. Install the required dependencies:
+
+   ```bash
+   npm install
+
+7. Run the node-server:
+   ```bash
+   cd TaskGenie/api
+   nodemon app.js
+
+8. Run the angular frontend (in another terminal):
+
+   ```bash
+   cd TaskGenie/frontend
    ng serve
-7. Open your web browser and navigate to `http://localhost:4200/` to access TaskGenie.
+   
+9. Open your web browser and navigate to `http://localhost:4200/`to access TaskGenie.
 
 ## Usage
 
