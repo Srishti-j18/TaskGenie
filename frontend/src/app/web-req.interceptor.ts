@@ -10,7 +10,7 @@ export class WebReqInterceptor implements HttpInterceptor {
 
   constructor(private authService: AuthService) { }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
 
     // Handle the request
 

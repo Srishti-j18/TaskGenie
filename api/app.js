@@ -28,6 +28,25 @@ app.use(function (req, res, next) {
     next();
 });
 
+// check whether the request has a valid JWT access token
+let authenticate = (req, res, next) => {
+    let token = req.header('x-access-token');
+
+    // verify JWT
+    jwt.verify(token, User.getJWTSecret(), (err, decoded) => {
+        if (err) {
+            // there was an error 
+            // jwt is invalid *DO NOT AUTHENTICATE*
+            res.status(401).send(err);
+        } else {
+            // jwt is valid
+            req.user_id = decoded._id;
+            next();
+        }
+    });
+}
+
+
 // Verify Refresh Token Middleware (which will be verifying the session)
 let verifySession = (req, res, next) => {
     // grab the refresh token from the request header
@@ -88,11 +107,15 @@ let verifySession = (req, res, next) => {
 // Propose : Get all lists
 
 
-app.get('/lists', (req, res) => {
-    // We want to return an array of all the lists in the database
-    List.find({}).then((lists) => {
+app.get('/lists', authenticate, (req, res) => {
+    // We want to return an array of all the lists that belongs to the authenticated users
+    List.find({
+        _userId: req.user_id
+    }).then((lists) => {
         res.send(lists);
-    });
+    }).catch((e) => {
+        res.send(e);
+    })
 });
 
 // Post /lists
