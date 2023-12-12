@@ -157,10 +157,11 @@ app.patch('/lists/:id', authenticate, (req, res) => {
 
 // Post /lists/:id
 // Purpose:  delete a specified list
-app.delete('/lists/:id', (req, res) => {
+app.delete('/lists/:id', authenticate, (req, res) => {
     // We want to delete the specified list (document with id in the URL) 
     List.findOneAndDelete({
-        _id: req.params.id
+        _id: req.params.id,
+        _userId: req.user_id
     }).then((removedListDoc) => {
         res.send(removedListDoc);
 
