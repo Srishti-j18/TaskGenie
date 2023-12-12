@@ -12,16 +12,15 @@ TaskGenie is your magical solution for effective task management and productivit
 
 ## Features
 
-- **Login/Signup**: User can keep their data private by logging into TaskGenie.
+- **User Authentication**: Keep task data private with secure login/signup functionality.
 
-- **Task Tracking**: Effortlessly keep track of your tasks and to-do items.
+- **List Management**:  Create, edit, and delete lists, tailoring your workspace to your needs.
 
-- **List Creation**: Create lists to categorize and prioritize your tasks.
+- **Task Management**: ffortlessly track, create, edit, and delete tasks within custom lists.
 
-- **Subtask Management**: Break down complex tasks into smaller, manageable subtasks.
+- **Task Completion**: Celebrate achievements by marking tasks as complete.
 
-- **Task Completion**: Mark tasks as complete, celebrating your accomplishments.
-
+  
 ## Installation
 
 Prerequisites
