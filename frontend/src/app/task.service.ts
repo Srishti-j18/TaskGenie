@@ -22,6 +22,16 @@ export class TaskService {
     return this.webReqService.post('lists', { title }) as Observable<List>;
   }
 
+  updateList(listId: string, title: string): Observable<List> {
+    // We want to send a web request to update a list
+    return this.webReqService.patch(`lists/${listId}`, { title }) as Observable<List>;
+  }
+
+  deleteList(id: string): Observable<List> {
+    return this.webReqService.delete<List>(`lists/${id}`);
+
+  }
+
   getTasks(listId: string): Observable<Task[]> {
     return this.webReqService.get<Task[]>(`lists/${listId}/tasks`);
   }
