@@ -120,13 +120,14 @@ app.get('/lists', authenticate, (req, res) => {
 
 // Post /lists
 // Purpose: Create a list
-app.post('/lists', (req, res) => {
+app.post('/lists', authenticate, (req, res) => {
     // We want to create a new list and return the new list document back (which includes the Id)
     // The list information (fields) will be passed in via the JSON request body
     let title = req.body.title;
 
     let newList = new List({
-        title
+        title,
+        _userId: req.user_id
     });
     newList.save().then((listDoc) => {
         // the full list document is returned (incl. id)
@@ -161,6 +162,9 @@ app.delete('/lists/:id', (req, res) => {
         _id: req.params.id
     }).then((removedListDoc) => {
         res.send(removedListDoc);
+
+        // delete all the tasks that are in the deleted list
+        deleteTasksFromList(removedListDoc._id);
     });
 });
 
@@ -303,6 +307,15 @@ app.get('/users/me/access-token', verifySession, (req, res) => {
     })
 
 })
+
+// Helper Method
+let deleteTasksFromList = (_listId) => {
+    Task.deleteMany({
+        _listId
+    }).then(() => {
+        console.log("Tasks from" + _listId + "were deleted");
+    })
+}
 
 app.listen(3000, () => {
     console.log("Server is listening on port 3000");
