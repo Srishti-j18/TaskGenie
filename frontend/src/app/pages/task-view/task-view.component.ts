@@ -60,4 +60,10 @@ export class TaskViewComponent implements OnInit {
       console.log(res)
     });
   }
+  onDeleteTaskClick(id: string) {
+    this.taskService.deleteTask(this.selectedListId, id).subscribe((res: any) => {
+      this.tasks = this.tasks?.filter(val => val._id !== id);
+      console.log(res)
+    });
+  }
 }
