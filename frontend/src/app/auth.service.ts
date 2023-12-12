@@ -55,30 +55,31 @@ export class AuthService {
   logout() {
     this.removeSession();
 
-    this.router.navigateByUrl('/login');
+    this.router.navigate(['/login']);
+
   }
 
   getAccessToken() {
-    return localStorage.getItem('x-access-Token');
+    return localStorage.getItem('x-access-token');
   }
   getRefreshToken() {
-    return localStorage.getItem('x-refresh-Token');
+    return localStorage.getItem('x-refresh-token');
   }
 
   setAccessToken(accessToken: string) {
-    localStorage.setItem('x-access-Token', accessToken);
+    localStorage.setItem('x-access-token', accessToken);
   }
 
 
   private setSession(userId: string, accessToken: string, refreshToken: string) {
-    localStorage.setItem('userId', userId);
-    localStorage.setItem('accessToken', accessToken);
-    localStorage.setItem('refreshToken', refreshToken);
+    localStorage.setItem('user-id', userId);
+    localStorage.setItem('x-access-token', accessToken);
+    localStorage.setItem('x-refresh-token', refreshToken);
   }
   private removeSession() {
-    localStorage.removeItem('userId');
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('user-id');
+    localStorage.removeItem('x-access-token');
+    localStorage.removeItem('x-refresh-token');
   }
 
 
