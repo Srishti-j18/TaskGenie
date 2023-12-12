@@ -16,7 +16,7 @@ TaskGenie is your magical solution for effective task management and productivit
 
 - **List Management**:  Create, edit, and delete lists, tailoring your workspace to your needs.
 
-- **Task Management**: ffortlessly track, create, edit, and delete tasks within custom lists.
+- **Task Management**: Easily track, create, edit, and delete tasks within custom lists.
 
 - **Task Completion**: Celebrate achievements by marking tasks as complete.
 
