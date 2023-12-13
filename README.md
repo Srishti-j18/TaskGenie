@@ -12,7 +12,7 @@ TaskGenie is your magical solution for effective task management and productivit
 
 ## Features
 
-- **User Authentication**: Keep task data private with secure login/signup functionality.
+- **User Authentication**: Keep task data private with secure login/signup and logout functionality.
 
 - **List Management**:  Create, edit, and delete lists, tailoring your workspace to your needs.
 
