@@ -1,14 +1,9 @@
 # TaskGenie
 
-<p float="left">
-  <img src="image/list_screenshot.png" width="100%" height="100%" />
-</p>
+[TaskGenie_tour.webm](https://github.com/Srishti-j18/TaskGenie/assets/96656007/c98d5d12-e884-40be-a21e-a18db0569048)
+
 
 TaskGenie is your magical solution for effective task management and productivity enhancement. This user-friendly web app empowers you to regulate your daily routine, keep track of your tasks, and maintain discipline while adding a touch of enchantment to your day.
-<p>
- <img src="image/login_screenshot.png" width="60%" height="50%" />
- </p>
-
 
 ## Features
 
