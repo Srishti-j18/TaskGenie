@@ -1,7 +1,7 @@
 # TaskGenie
 
 <p float="left">
-  <img src="image/lists_screenshot.png" width="100%" height="100%" />
+  <img src="image/list_screenshot.png" width="100%" height="100%" />
 </p>
 
 TaskGenie is your magical solution for effective task management and productivity enhancement. This user-friendly web app empowers you to regulate your daily routine, keep track of your tasks, and maintain discipline while adding a touch of enchantment to your day.
