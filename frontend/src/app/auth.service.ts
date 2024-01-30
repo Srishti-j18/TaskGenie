@@ -58,6 +58,19 @@ export class AuthService {
 
   }
 
+
+
+  private setSession(userId: string, accessToken: string, refreshToken: string) {
+    localStorage.setItem('user-id', userId);
+    localStorage.setItem('x-access-token', accessToken);
+    localStorage.setItem('x-refresh-token', refreshToken);
+  }
+  private removeSession() {
+    localStorage.removeItem('user-id');
+    localStorage.removeItem('x-access-token');
+    localStorage.removeItem('x-refresh-token');
+  }
+
   getAccessToken() {
     return localStorage.getItem('x-access-token');
   }
@@ -71,18 +84,6 @@ export class AuthService {
 
   setAccessToken(accessToken: string) {
     localStorage.setItem('x-access-token', accessToken);
-  }
-
-
-  private setSession(userId: string, accessToken: string, refreshToken: string) {
-    localStorage.setItem('user-id', userId);
-    localStorage.setItem('x-access-token', accessToken);
-    localStorage.setItem('x-refresh-token', refreshToken);
-  }
-  private removeSession() {
-    localStorage.removeItem('user-id');
-    localStorage.removeItem('x-access-token');
-    localStorage.removeItem('x-refresh-token');
   }
 
   getNewAccessToken() {
